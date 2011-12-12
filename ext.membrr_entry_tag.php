@@ -103,6 +103,13 @@ class Membrr_entry_tag_ext
 		    $sql = $this->EE->db->insert_string('exp_membrr_channel_posts', $data);
   		  
   		  $this->EE->db->query($sql);
+  		  
+  		  // Update the Entry Status to paid
+  		  
+  		  $status_data = array("status"=>"Paid");
+  		  $status_query = $this->EE->db->update_string('exp_channel_titles', $status_data, "entry_id=".$row['entry_id']);
+  		  $this->EE->db->query($status_query);
+  		  
 		  }		  
 		  		  
 		}
